@@ -115,6 +115,8 @@
 <div class="container-fluid">
     <div class="container py-5">
 
+
+<!-- Lista blanca: Validando ingreso a páginas por url -->
         <?php
 
         if(isset($_GET["pagina"])){
@@ -124,7 +126,9 @@
                 $_GET["pagina"]=="inicio" ||
                 $_GET["pagina"]=="salir" ){
                     include "paginas/".$_GET["pagina"].".php";
-                }
+                }else{
+					include "paginas/error404.php" ;
+				}
         }else{
             include "paginas/registro.php" ;
         }
