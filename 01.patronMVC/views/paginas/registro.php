@@ -1,3 +1,4 @@
+<h1>Registro</h1>
 <form>
 
 <div class="form-group">
