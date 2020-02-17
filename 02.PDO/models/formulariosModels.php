@@ -4,7 +4,7 @@ require_once "conexion.php";
 
 class ModeloFormularios{
       /*============================
-            REGISTRO    
+            REGISTRO  - INSERTAR  
          ========================*/
      
     static public function mdlRegistro($tabla, $datos){
@@ -24,4 +24,23 @@ class ModeloFormularios{
         $stmt= null;
 
     }
+
+      /*============================
+        SELECCIONAR REGISTRO  - LEER  
+        ========================*/
+
+        static public function mdlSeleccionarRegistros($tabla){
+
+            $stmt = Conexion::conectar()-> prepare("SELECT * FROM $tabla");
+            $stmt->execute();
+            return $stmt->fetchAll();
+
+            $stmt->close();
+            $stmt= null;
+    
+        }
+
+
+
+
 }
