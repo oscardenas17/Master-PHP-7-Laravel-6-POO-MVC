@@ -4,11 +4,7 @@
  require_once "controllers/plantillaController.php";
  require_once "controllers/formulariosController.php";
 
- require_once "models/conexion.php";
-
-$conexion = Conexion::conectar();
-echo '<pre>'; print_r($conexion); echo '</pre>';
-
+ require_once "models/formulariosModels.php";
 
  $plantilla = new ControllerPlantilla();
  $plantilla -> ctrTraerPlantilla();
