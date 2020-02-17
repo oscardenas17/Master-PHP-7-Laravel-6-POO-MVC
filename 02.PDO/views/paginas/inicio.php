@@ -8,6 +8,7 @@ $usuarios =  ControllerFormularios::ctrSeleccionarRegistros();
 <table class="table table-striped">
         <thead>
           <tr>
+            <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Email</th>
             <th scope="col">Fecha</th>
@@ -18,6 +19,7 @@ $usuarios =  ControllerFormularios::ctrSeleccionarRegistros();
         <tbody> 
           <?php foreach($usuarios as $key => $value): ?>
             <tr>
+              <td> <?php echo ($key+1) ?> </td>
               <td> <?php echo $value['nombre'] ?>  </td>
               <td> <?php echo $value['email'] ?>  </td>
               <td> <?php echo $value['fecha'] ?>  </td>
