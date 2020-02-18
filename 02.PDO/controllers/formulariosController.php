@@ -50,6 +50,8 @@
                 if(is_Array($respuesta)){
                     if( $respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $_POST["ingresoPassword"]){
 
+                      $_SESSION["validarIngreso"]= "ok";
+
                         echo '<script>
                        if (window.history.replaceState){
                          window.history.replaceState(null,null, window.location.href);
