@@ -43,14 +43,14 @@
 
     <?php
     /*--============================
-        REGISTRO    - manera de instanciar la clasede un metodo no estatico, em el controlador devuelve con echo
+        REGISTRO    - manera de instanciar la clasede un metodo no estatico, em el controlador devuelve con echo , se ejecutan en el controlador, las acciones se hacen en el controlador
     ========================*/
      //$registro = new ControllerFormularios();
      // $registro-> ctrRegistro();
    
 
      /*--============================
-     REGISTRO    - manera de instanciar la clasede un metodo  estatico, usar palabra static en el controlador devuelve con return
+     REGISTRO    - manera de instanciar la clasede un metodo  estatico, usar palabra static en el controlador devuelve con return, para usar este objeto en la vista y hacer otras acciones como aca con el if
     ========================*/
     $registro = ControllerFormularios::ctrRegistro();
 

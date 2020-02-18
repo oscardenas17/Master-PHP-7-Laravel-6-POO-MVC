@@ -1,6 +1,6 @@
 <?php
 $usuarios =  ControllerFormularios::ctrSeleccionarRegistros();
-/*visualizar si trae datos el arrayecho '<pre>'; print_r($usuarios); echo'</pre>'*/
+/*visualizar si trae datos el arrayecho '<pre>'; print_r($usuarios); echo'</pre>'  */
 
 ?>
 
