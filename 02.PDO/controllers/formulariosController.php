@@ -26,10 +26,10 @@
         SELECCIONAR REGISTRO    
         ========================*/
 
-        static public function ctrSeleccionarRegistros(){
+        static public function ctrSeleccionarRegistros( $item, $valor){
 
             $tabla= "registros";
-            $respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla,null, null);
+            $respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla,$item, $valor);
 
             return $respuesta;
         }
@@ -83,7 +83,54 @@
                            
             }
 
+
+
+
+               /*============================
+       ACTUALIZAR REGISTRO    
+        ========================*/
+
+        public function ctrActualizarRegistro(){
+          if(isset($_POST["actualizarNombre"])){
+
+            if($_POST["actualizarPassword"] != ""){
+
+              $password = $_POST["actualizarPassword"];
+
+            }else{
+              $password = $_POST["PasswordActual"];
+            }
+
+            $tabla = "registros";  
+            
+            $datos = array(
+                           "id" => $_POST["idUsuario"],
+                            "nombre" => $_POST["actualizarNombre"],
+                           "email"=> $_POST["actualizarEmail"],
+                           "password" => $password);
+
+
+             $respuesta = ModeloFormularios::mdlActualizarRegistro($tabla,$datos);
+                if($respuesta = "ok"){
+                  echo '<script>
+                  if (window.history.replaceState){
+                  
+                    window.history.replaceState(null,null, window.location.href);
+                  }
+                </script>';
+        
+              echo '<div class="alert alert-success "> Usuario editado </div>';
+
+                }
+
+             return $respuesta;
+            
+        }
+          
         }
 
+}
+     
+ 
 
 ?>

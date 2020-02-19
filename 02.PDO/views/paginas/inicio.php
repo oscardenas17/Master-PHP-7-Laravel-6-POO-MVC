@@ -12,10 +12,13 @@ if(!isset($_SESSION["validarIngreso"])){
   }
 }
 
-$usuarios =  ControllerFormularios::ctrSeleccionarRegistros();
-/*visualizar si trae datos el arrayecho '<pre>'; print_r($usuarios); echo'</pre>'  */
+$usuarios =  ControllerFormularios::ctrSeleccionarRegistros(null, null);
+/*visualizar si trae datos el array echo '<pre>'; print_r($usuarios); echo'</pre>'  */
+
 
 ?>
+
+
 
 
 <table class="table table-striped">
@@ -38,7 +41,7 @@ $usuarios =  ControllerFormularios::ctrSeleccionarRegistros();
               <td> <?php echo $value['fecha'] ?>  </td>
               <td>
                 <div class="btn-group">
-                  <button class="btn btn-warning mr-1"><i class="fas fa-pencil-alt"></i></button>
+                  <a href="index.php?pagina=editar&id=<?php echo $value['id'] ; ?>"class="btn btn-warning mr-1"><i class="fas fa-pencil-alt"></i></a>
                   <button class="btn btn-danger "><i class="fas fa-trash"></i></button>
                 </div>
               </td>
