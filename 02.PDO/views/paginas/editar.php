@@ -59,12 +59,32 @@ value="<?php echo $usuario["nombre"]; ?>" >
     </div>
 
 <?php
-    $actualizar = new ControllerFormularios();
-     $actualizar -> ctrActualizarRegistro();
-?>
+    $actualizar = ControllerFormularios::ctrActualizarRegistro();
 
-  
 
+    if( $actualizar= "ok"){
+      echo '<script>
+      if (window.history.replaceState){
+      
+        window.history.replaceState(null,null, window.location.href);
+      }
+    </script>';
+
+      echo '<div class="alert alert-success "> Usuario editado correctamente </div>'; 
+      echo ' <a href="index.php?pagina=inicio"class="btn btn-warning mr-1">Regresar</a>
+      
+      ';
+
+    }
+
+   /*
+    <script> 
+    setTimeout(function(){
+      window.location ="index.php?pagina=inicio";
+    },3000);
+     </script>*/
+
+  ?>
 
     <button type="submit" class="btn btn-primary">Actualizar</button>
   </form>
