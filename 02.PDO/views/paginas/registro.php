@@ -24,7 +24,7 @@
         </div>
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="registroEmail">
         </div>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+       
     </div>
 
 
@@ -37,6 +37,7 @@
               </span>
           </div>
             <input type="password" class="form-control" id="Password" name="registroPassword">
+            <small id="emailHelp" class="form-text text-muted">La contraseña debe contener minimo 8 caracteres, una letra en minuscula, una letra en mayuscula, el menos un numero, al menos un simbolo</small>
         </div>
     </div>
 
@@ -63,6 +64,16 @@
         </script>';
 
       echo '<div class="alert alert-success "> Usuario registrado</div>';
+    }
+
+    if($registro =="error"){
+      echo '<script>
+      if (window.history.replaceState){
+        window.history.replaceState(null,null, window.location.href);
+      }
+    </script>';
+
+  echo '<div class="alert alert-danger "> No se permiten caracteres especiales en el nombre y/o contraseña</div>';
     }
 
     ?>

@@ -6,20 +6,38 @@
          ========================*/
          
          static public function ctrRegistro(){
-           if(isset($_POST["registroNombre"])){
+          if(isset($_POST["registroNombre"])){
 
-               $tabla = "registros";  
-               
-               $datos = array("nombre" => $_POST["registroNombre"],
-                              "email"=> $_POST["registroEmail"],
-                              "password" => $_POST["registroPassword"]);
-
-
-                $respuesta = ModeloFormularios::mdlRegistro($tabla,$datos);
-                return $respuesta;
-               
-           }
-    }
+            if(preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["registroNombre"]) &&
+               preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["registroEmail"]) &&
+               preg_match('/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/', $_POST["registroPassword"])){
+      
+              $tabla = "registros";
+      
+              $token = md5($_POST["registroNombre"]."+".$_POST["registroEmail"]);
+      
+              $encriptarPassword = crypt($_POST["registroPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+      
+              $datos = array("token" => $token,
+                      "nombre" => $_POST["registroNombre"],
+                           "email" => $_POST["registroEmail"],
+                           "password" => $encriptarPassword);
+      
+              $respuesta = ModeloFormularios::mdlRegistro($tabla, $datos);
+      
+              return $respuesta;
+      
+            }else{
+      
+              $respuesta = "error";
+      
+              return $respuesta;
+      
+            }
+      
+          }
+      
+        }
 
 
     /*============================
