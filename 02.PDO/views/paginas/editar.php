@@ -1,8 +1,8 @@
 <?php
-  if(isset($_GET["token"])){
+  if(isset($_GET["id"])){
 
-    $item = "token";
-    $valor = $_GET["token"];
+    $item = "id";
+    $valor = $_GET["id"];
 
     $usuario = ControllerFormularios::ctrSeleccionarRegistros($item,$valor);
    /* echo'<pre>'; print_r($usuario); echo'</pre>';*/
@@ -53,7 +53,7 @@ value="<?php echo $usuario["nombre"]; ?>" >
 
             <input type="hidden" name="passwordActual" value="<?php echo $usuario["password"]; ?>" >
 
-            <input type="hidden" name="tokenUsuario" value="<?php echo $usuario["token"]; ?>" >
+            <input type="hidden" name="idUsuario" value="<?php echo $usuario["id"]; ?>" >
 
         </div>
     </div>
@@ -76,21 +76,6 @@ value="<?php echo $usuario["nombre"]; ?>" >
       ';
 
     }
-
-
-
-    if( $actualizar= "error"){
-      echo '<script>
-      if (window.history.replaceState){
-      
-        window.history.replaceState(null,null, window.location.href);
-      }
-    </script>';
-
-      echo '<div class="alert alert-danger "> Error al actualizar el usuario </div>'; 
-     
-    }
-
 
    /*
     <script> 
