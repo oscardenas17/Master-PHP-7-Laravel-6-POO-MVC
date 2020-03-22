@@ -68,6 +68,8 @@
                 if(is_Array($respuesta)){
                     if( $respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $_POST["ingresoPassword"]){
 
+                     ModeloFormularios::mdlActualizarIntentosFallidos($tabla, 0, $respuesta ["token"]);
+
                       $_SESSION["validarIngreso"]= "ok";
 
                         echo '<script>
@@ -79,7 +81,17 @@
                      </script>';
    
                    }else{
-                       
+
+                    if($respuesta["intentos_fallidos"] < 3 ){
+                      
+                        $tabla ="registros";
+                        $intentos_fallidos = $respuesta["intentos_fallidos"]+1;
+                        ModeloFormularios::mdlActualizarIntentosFallidos($tabla, $intentos_fallidos, $respuesta["token"]);
+                      }else{
+
+                        echo '<div class="alert alert-warning "> RECAPTCHA, valida que no eres un robot </div>';
+
+                      }
                        echo '<script>
                        if (window.history.replaceState){
                          window.history.replaceState(null,null, window.location.href);
